@@ -49,42 +49,50 @@ end subroutine constant
 subroutine grid
 use globe
 implicit none
+integer i, j
 end subroutine grid
 
 subroutine readin
 use globe
 implicit none
+integer i
 end subroutine readin
 
 subroutine field
 use globe
 implicit none
+integer i, j
 end subroutine field
 
 subroutine diffusivity
 use globe
 implicit none
+integer i
 end subroutine diffusivity
 
 subroutine linear
 use globe
 implicit none
+integer i, j, l
 double precision a(0:nr,nl), b(0:nr,nl), c(0:nr,nl)
 end subroutine linear
 
 subroutine energy
 use globe
 implicit none
+integer i, j, l
 end subroutine energy
 
 subroutine dissipation
 use globe
 implicit none
+integer i, j, l
 end subroutine dissipation
 
 subroutine output
 use globe
 implicit none
+integer i, j, l
 end subroutine output 
 
 !     PPP(N,M,C) is the N,M-th associated Legendre function evaluated at
