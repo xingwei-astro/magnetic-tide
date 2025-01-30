@@ -21,7 +21,8 @@ end module globe
 program main
 use globe
 implicit none
-call constant ! give constants
+call constant ! give constant
+call grid ! give grid
 call readin ! read equilibrium rho0, p0, T0, Psi0, g0
 call field ! give equilibrium field B01, B02, B03
 call diffusivity ! give vis1, vis2, eta
@@ -45,10 +46,10 @@ R_star=7.d10
 R_planet=7.d9
 end subroutine constant
 
-subroutine grids
+subroutine grid
 use globe
 implicit none
-end subroutine grids
+end subroutine grid
 
 subroutine readin
 use globe
