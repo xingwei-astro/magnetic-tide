@@ -21,6 +21,19 @@ end module globe
 program main
 use globe
 implicit none
+call constant ! give constants
+call readin ! read equilibrium rho0, p0, T0, Psi0, g0
+call field ! give equilibrium field B01, B02, B03
+call diffusivity ! give vis1, vis2, eta
+call linear ! calculate linear perturbation equations
+call energy ! calculate kinetic energy, magnetic energy, energy flux
+call dissipation ! calculate viscous and ohmic dissipations
+call output ! output variables
+end program main
+
+subroutine constant
+use globe
+implicit none
 one=(0.d0,1.d0)
 pi=acos(-1.d0)
 G=6.67d-8
@@ -30,13 +43,7 @@ M_star=2.d33
 M_planet=2.d30
 R_star=7.d10
 R_planet=7.d9
-call readin ! read equilibrium rho0, p0, T0, Psi0, g0
-call field ! give equilibrium field B01, B02, B03
-call linear ! calculate linear perturbation equations
-call energy ! calculate kinetic energy, magnetic energy, energy flux
-call dissipation ! calculate viscous and ohmic dissipations
-call output ! output variables
-end program main
+end subroutine constant
 
 subroutine grids
 use globe
@@ -52,6 +59,11 @@ subroutine field
 use globe
 implicit none
 end subroutine field
+
+subroutine diffusivity
+use globe
+implicit none
+end subroutine diffusivity
 
 subroutine linear
 use globe
