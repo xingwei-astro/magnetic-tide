@@ -15,7 +15,7 @@ double precision rho1_p(0:nr,nt), h1_p(0:nr,nt), Psi1_p(0:nr,nt) ! physical spac
 double precision u1_p(0:nr,nt), u2_p(0:nr,nt), u3_p(0:nr,nt) ! physical space
 double precision B1_p(0:nr,nt), B2_p(0:nr,nt), B3_p(0:nr,nt) ! physical space
 double precision gamma_adia(0:nr), N2(0:nr)
-double precision vis1(0:nr), vis2(0:nr), eta(0:nr)
+double precision vis(0:nr), eta(0:nr)
 end module globe
 
 program main
@@ -25,7 +25,7 @@ call constant ! give constant
 call grid ! give grid
 call readin ! read equilibrium rho0, p0, T0, Psi0, g0
 call field ! give equilibrium field B01, B02, B03
-call diffusivity ! give vis1, vis2, eta
+call diffusivity ! give vis, eta
 call linear ! calculate linear perturbation equations
 call energy ! calculate kinetic energy, magnetic energy, energy flux
 call dissipation ! calculate viscous and ohmic dissipations
