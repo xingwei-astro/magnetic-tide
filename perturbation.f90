@@ -5,17 +5,18 @@ double precision pi, G, kB, m_H
 double precision M_star, M_planet, M_moon, R_star, R_planet, R_moon
 integer nr, nt, nl, m, l0, m0 ! nt physical space, nl spectral space, m azimuthal mode, l0 and m0 tidal potential wavenumbers
 parameter (nr=100, nt=80, nl=60, m=2, l0=2, m0=2)
-double precision r(0:nr), theta(nt)
-double precision rho0(0:nr), p0(0:nr), T0(0:nr), cs(0:nr), Psi0(0:nr), g0(0:nr)
-double precision B01(0:nr,nt), B02(0:nr,nt), B03(0:nr,nt)
-double precision rho1_s(0:nr,nl), h1_s(0:nr,nl), Psi1_s(0:nr,nl) ! spectral space
-double precision u1_s(0:nr,nl), u2_s(0:nr,nl), u3_s(0:nr,nl) ! spectral space
-double precision B1_s(0:nr,nl), B2_s(0:nr,nl), B3_s(0:nr,nl) ! spectral space
-double precision rho1_p(0:nr,nt), h1_p(0:nr,nt), Psi1_p(0:nr,nt) ! physical space
-double precision u1_p(0:nr,nt), u2_p(0:nr,nt), u3_p(0:nr,nt) ! physical space
-double precision B1_p(0:nr,nt), B2_p(0:nr,nt), B3_p(0:nr,nt) ! physical space
-double precision gamma_adia(0:nr), N2(0:nr)
-double precision vis(0:nr), eta(0:nr)
+double precision r(0:nr), theta(nt) ! grid
+double precision rho0(0:nr), p0(0:nr), T0(0:nr), cs(0:nr), Psi0(0:nr), g0(0:nr) ! equilibrium density, pressure, temperature, etc.
+double precision B01(0:nr,nt), B02(0:nr,nt), B03(0:nr,nt) ! equilibrium field
+double precision rho1_s(0:nr,nl), h1_s(0:nr,nl), Psi1_s(0:nr,nl) ! density perturbation in spectral space
+double precision v1_s(0:nr,nl), v2_s(0:nr,nl), v3_s(0:nr,nl) ! velocity perturbation in spectral space
+double precision B1_s(0:nr,nl), B2_s(0:nr,nl), B3_s(0:nr,nl) ! field perturbation in spectral space
+double precision rho1_p(0:nr,nt), h1_p(0:nr,nt), Psi1_p(0:nr,nt) ! density perturbation physical space
+double precision v1_p(0:nr,nt), v2_p(0:nr,nt), v3_p(0:nr,nt) ! velocity perturbation physical space
+double precision B1_p(0:nr,nt), B2_p(0:nr,nt), B3_p(0:nr,nt) ! field perturbation in physical space
+double precision a(0:nr,nl), b(0:nr,nl), c(0:nr,nl) ! velocity perturbation decomposition in spectral space
+double precision gamma_adia(0:nr), N2(0:nr) ! adiabatic index, buoyancy frequency
+double precision vis(0:nr), eta(0:nr) ! viscosity, magnetic diffusivity
 end module globe
 
 program main
@@ -74,7 +75,6 @@ subroutine linear
 use globe
 implicit none
 integer i, j, l
-double precision a(0:nr,nl), b(0:nr,nl), c(0:nr,nl)
 end subroutine linear
 
 subroutine energy
